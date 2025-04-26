@@ -32,33 +32,49 @@ boardEls.forEach((El) => {
 
 function init(event) {
   renderGame();
-  console.log(event.target);
+  
+};
+
+function createMines(boardEls) {
+  const mineIdx = [];
+  while (mineIdx.length < 7) {
+    const randomIndex = Math.floor(Math.random() * boardEls.length);
+    mineIdx.push(randomIndex);
+  }
+
 };
 
 function handleClick(event) {
   checkForMine(event.target);
-  revealTile();
+  revealTile(event.target);
   console.log(event.target);
 };
 
-function revealTile(event) {
-  
-
+function revealTile(target) {
+  target.style.backgroundColor ="lightgrey";
 };
 
 function checkForMine(target) {
   if (target === true) {
     console.log('mine');
   } else {
-    revealTile();
+    revealTile(target);
     console.log('not a mine')
   }
 
 };
 
 function renderGame() {
+  createMines();
+  minesCounter();
 
 };
 
 
-
+function minesCounter() {
+  let mineCount = 0;
+  boardEls.foreach(tile => {
+    if(tile.dataset.mine === 'true') {
+      mineCount++;
+    }
+  })};

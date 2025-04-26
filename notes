@@ -26,10 +26,20 @@
 
 
 
+win con
+dont hit bomb
+loop for empty squeres if no open squeres = win
+
+
+flood logic/numbers
+click = check for bomb = reveal 
+check empty adjacent
 
 
 
-
+click tile
+check for mine; mine = false
+reveal tile
 
 
 
