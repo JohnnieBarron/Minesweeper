@@ -35,11 +35,13 @@ function init(event) {
   
 };
 
-function createMines(boardEls) {
+function createMines() {
   const mineIdx = [];
   while (mineIdx.length < 7) {
     const randomIndex = Math.floor(Math.random() * boardEls.length);
     mineIdx.push(randomIndex);
+    boardEls[randomIndex].dataset.mine = "true";
+    console.log(mineIdx);
   }
 
 };
