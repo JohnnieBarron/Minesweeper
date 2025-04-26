@@ -75,8 +75,9 @@ function renderGame() {
 
 function minesCounter() {
   let mineCount = 0;
-  boardEls.foreach(tile => {
+  boardEls.forEach(tile => {
     if(tile.dataset.mine === 'true') {
       mineCount++;
+      console.log(`mine count is ${mineCount}`);
     }
   })};
