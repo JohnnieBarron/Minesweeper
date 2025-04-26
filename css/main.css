@@ -2,6 +2,13 @@
     box-sizing: border-box;
   }
 
+  .head {
+    display: flex;
+    gap: 5vmin;
+    margin-bottom: 5vmin;
+}
+
+
   .minefield {
     display: grid;
     grid-template-columns: repeat(6, 10vmin);
@@ -19,8 +26,8 @@
   
   button {
     font-size: 2vmin;       
-    width: 10vmin;          
-    height: 10vmin;         
+    width: 7vmin;          
+    height: 7vmin;         
   }
 
   h1 {
