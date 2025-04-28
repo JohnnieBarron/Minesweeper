@@ -70,12 +70,13 @@ function checkForMine(target) {
 };
 
 function createMines() {
-  const mineIdx = [];
+  const mineIdx = new Set(); 
   while (mineIdx.length < 7) {
     const randomIndex = Math.floor(Math.random() * boardEls.length);
-    mineIdx.push(randomIndex);
-    boardEls[randomIndex].isMine = true;
-    console.log(mineIdx);
+    if (!mineIdx.has(randomIndex)) {
+      mineIdx.add(randomIndex);
+      board[randomIndex].isMine = true;
+    }
   }
 
 };
