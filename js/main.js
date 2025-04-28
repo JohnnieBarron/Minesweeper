@@ -33,9 +33,15 @@ boardEls.forEach((El) => {
 
 
 /*----- functions -----*/
-
+init();
 
 function init(event) {
+  board = boardEls.length ? Array.from({length: boardEls.length }, () => ({
+    isMine: false,
+    isRevealed: false,
+    isFlagged: false,
+  })) : [];
+
   renderGame();
   
 };
