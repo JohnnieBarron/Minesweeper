@@ -9,7 +9,7 @@ const tile = {
 /*----- state variables -----*/
 let board;
 let flags;
-let winner = null;
+let win = true;
 
 /*----- cached elements  -----*/
 
@@ -36,6 +36,7 @@ boardEls.forEach((El) => {
 init();
 
 function init() {
+  win = true;
 
 
   renderGame();
@@ -44,6 +45,7 @@ function init() {
 
 
 function handleClick(event) {
+  if (win === false) return;
   const idx = Array.from(boardEls).indexOf(event.target);
   checkForMine(idx);
   revealTile(idx);
@@ -61,7 +63,7 @@ function revealTile(idx) {
 function checkForMine(idx) {
   if (board[idx].isMine) {
     console.log('mine');
-    
+    win = false;
   } else {
     console.log('not a mine')
   }
