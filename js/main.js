@@ -19,8 +19,6 @@ const flagEL = document.querySelector('#flags');
 const mineCounterEL = document.querySelector('#mines');
 const boardEls = document.querySelectorAll('section.minefield div');
 
-  
-
 /*----- event listeners -----*/
 
 buttonEl.addEventListener('click', init);
@@ -37,9 +35,6 @@ function init() {
   flags = 7;
   inPlay = true;
   renderGame();
-  
-
-  
 };
 
 function placeFlag(idx) {
@@ -159,6 +154,14 @@ function minesCounter() {
       }
     });
   };
+
+  function checkWin() {
+    const unrevealedTiles = board.filter(tile => !tile.isRevealed);
+    if (unrevealedTiles.length === 7) {
+      inPlay = false;
+      msgEl.textContent = "You Win! 🎉";
+    }
+  }
 
   /*---------- render -------------------*/
 
