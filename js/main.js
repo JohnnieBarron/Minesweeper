@@ -57,7 +57,7 @@ function handleClick(event) {
 
 function revealTile(idx) {
   board[idx].isRevealed = true;
-  board[idx].style.backgroundColor ="lightgrey";
+  boardEls[idx].style.backgroundColor ="lightgrey";
 };
 
   /*----------------------------- mine functions ---------------------------------*/
@@ -65,7 +65,7 @@ function revealTile(idx) {
 function checkForMine(idx) {
   if (board[idx].isMine) {
     console.log('mine');
-    return;
+    
   } else {
     console.log('not a mine')
   }
@@ -85,14 +85,10 @@ function createMines() {
 };
 
 function minesCounter() {
-  let mineCount = 0;
-  boardEls.forEach(tile => {
-    if(tile.dataset.mine === 'true') {
-      mineCount++;
-      console.log(`mine count is ${mineCount}`);
-    }
-    mineCounterEL.textContent = mineCount
-  })};
+ const mineCount = board.filter(tile => tile.isMine).length;
+ mineCounterEL.textContent = mineCount;
+ console.log(`mine count is ${mineCount}`);
+  };
 
 
   /*---------- render -------------------*/
