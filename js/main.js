@@ -1,4 +1,4 @@
-/*----- constants -----*/
+//*----- constants -----*/
 const tile = {
   isMine: false,
   isRevealed: false,
@@ -9,7 +9,7 @@ const tile = {
 /*----- state variables -----*/
 let board;
 let flags;
-let win = true;
+let winner = null;
 
 /*----- cached elements  -----*/
 
@@ -36,26 +36,26 @@ boardEls.forEach((El) => {
 init();
 
 function init() {
-  win = true;
-
-
   renderGame();
   
 };
 
 
 function handleClick(event) {
-  if (win === false) return;
   const idx = Array.from(boardEls).indexOf(event.target);
   checkForMine(idx);
   revealTile(idx);
-
   console.log(event.target);
 };
 
 function revealTile(idx) {
   board[idx].isRevealed = true;
-  boardEls[idx].style.backgroundColor ="lightgrey";
+  if (board[idx].isMine === false) {
+    boardEls[idx].style.backgroundColor ="lightgrey";
+  } else if (board[idx].isMine === true) {
+    boardEls[idx].textContent = "💣";
+    boardEls[idx].style.backgroundColor = "red";
+  }
 };
 
   /*----------------------------- mine functions ---------------------------------*/
@@ -63,11 +63,9 @@ function revealTile(idx) {
 function checkForMine(idx) {
   if (board[idx].isMine) {
     console.log('mine');
-    win = false;
   } else {
     console.log('not a mine')
   }
-  
 };
 
 function createMines() {
@@ -97,7 +95,6 @@ function minesCounter() {
       isRevealed: false,
       isFlagged: false,
     })) : [];
-
     boardEls.forEach(tile => {
       tile.style.backgroundColor = 'grey';
     });
