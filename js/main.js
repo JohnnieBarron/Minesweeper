@@ -35,7 +35,7 @@ boardEls.forEach((El) => {
 /*----- functions -----*/
 init();
 
-function init(event) {
+function init() {
 
 
   renderGame();
@@ -103,9 +103,9 @@ function minesCounter() {
   }
 
 function renderGame() {
+  renderBoard();
   createMines();
   minesCounter();
-  renderBoard
 };
 
 
