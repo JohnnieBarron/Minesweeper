@@ -27,27 +27,42 @@ buttonEl.addEventListener('click', init);
 
 boardEls.forEach((El) => {
    El.addEventListener('click', handleClick);
+   El.addEventListener('contextmenu', handleRightClick);
  });
-
- 
-
 
 /*----- functions -----*/
 init();
 
 function init() {
+  flags = 7;
   inPlay = true;
   renderGame();
+  
 
   
 };
 
-function placeFlag() {
+function placeFlag(idx) {
+  if (board[idx].isRevealed) return;
+  if (flags === 0) return
 
+  board[idx].isFlagged = !board[idx].isFlagged;
+
+  if (board[idx].isFlagged) {
+    boardEls[idx].textContent = '🚩';
+    flags--;
+  } else {
+    boardEls[idx].textContent = '';
+  }
+  flagEL.textContent = flags;
 };
 
-function handleRightClick() {
+function handleRightClick(event) {
+  event.preventDefault();                 
+  if (!inPlay) return;
 
+  const idx = Array.from(boardEls).indexOf(event.target);
+  placeFlag(idx)
 };
 
 function handleClick(event) {
@@ -116,7 +131,7 @@ function minesCounter() {
     return count;
   };
 
-  function getAdjacentIndices(idx) {
+  function getAdjacentIndices(idx) {              // discord and google AI
     const width = Math.sqrt(boardEls.length); 
     const neighbors = [];
   
@@ -157,7 +172,8 @@ function minesCounter() {
       tile.style.backgroundColor = 'grey';
       tile.textContent = "";
     });
-    msgEl.textContent = ""
+    msgEl.textContent = "";
+    flagEL.textContent = flags;
   }
 
 function renderGame() {
