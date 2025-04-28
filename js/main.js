@@ -80,4 +80,5 @@ function minesCounter() {
       mineCount++;
       console.log(`mine count is ${mineCount}`);
     }
+    mineCounterEL.textContent = mineCount
   })};
