@@ -42,6 +42,9 @@ function init() {
   
 };
 
+function placeFlag() {
+  
+};
 
 function handleClick(event) {
   if (inPlay === false) return;
