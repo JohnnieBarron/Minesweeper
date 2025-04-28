@@ -1,9 +1,15 @@
 /*----- constants -----*/
+const tile = {
+  isMine: false,
+  isRevealed: false,
+  isFlagged: false,
+
+}
   
 /*----- state variables -----*/
 let board;
 let flags;
-let winner;
+let winner = null;
 
 /*----- cached elements  -----*/
 
@@ -12,7 +18,6 @@ const buttonEl = document.querySelector('.head button');
 const flagEL = document.querySelector('#flags');
 const mineCounterEL = document.querySelector('#mines');
 const boardEls = document.querySelectorAll('section.minefield div');
-const isMine = false;
 
   
 
@@ -35,16 +40,6 @@ function init(event) {
   
 };
 
-function createMines() {
-  const mineIdx = [];
-  while (mineIdx.length < 7) {
-    const randomIndex = Math.floor(Math.random() * boardEls.length);
-    mineIdx.push(randomIndex);
-    boardEls[randomIndex].dataset.mine = "true";
-    console.log(mineIdx);
-  }
-
-};
 
 function handleClick(event) {
   checkForMine(event.target);
@@ -56,6 +51,8 @@ function revealTile(target) {
   target.style.backgroundColor ="lightgrey";
 };
 
+  /*----------------------------- mine functions ---------------------------------*/
+
 function checkForMine(target) {
   if (target === true) {
     console.log('mine');
@@ -63,15 +60,19 @@ function checkForMine(target) {
     revealTile(target);
     console.log('not a mine')
   }
-
+  
 };
 
-function renderGame() {
-  createMines();
-  minesCounter();
+function createMines() {
+  const mineIdx = [];
+  while (mineIdx.length < 7) {
+    const randomIndex = Math.floor(Math.random() * boardEls.length);
+    mineIdx.push(randomIndex);
+    boardEls[randomIndex].dataset.mine = "true";
+    console.log(mineIdx);
+  }
 
 };
-
 
 function minesCounter() {
   let mineCount = 0;
@@ -82,3 +83,13 @@ function minesCounter() {
     }
     mineCounterEL.textContent = mineCount
   })};
+
+
+  /*---------- render -------------------*/
+function renderGame() {
+  createMines();
+  minesCounter();
+
+};
+
+
