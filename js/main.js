@@ -56,6 +56,10 @@ function revealTile(idx) {
   board[idx].isRevealed = true;
   if (board[idx].isMine === false) {
     boardEls[idx].style.backgroundColor ="lightgrey";
+    const adjMines = countAdjacentMines(idx);
+    if (adjMines > 0) {
+      boardEls[idx].textContent = adjMines;
+    }
   } else if (board[idx].isMine === true) {
     boardEls[idx].textContent = "💣";
     boardEls[idx].style.backgroundColor = "red";
@@ -92,6 +96,34 @@ function minesCounter() {
  console.log(`mine count is ${mineCount}`);
   };
 
+  function countAdjacentMines (idx) {
+    const adjacentIndices = getAdjacentIndices(idx);
+    let count = 0;
+    adjacentIndices.forEach(i => {
+      if (board[i] && board[i].isMine) count++;
+    });
+    return count;
+  };
+
+  function getAdjacentIndices(idx) {
+    const width = Math.sqrt(boardEls.length); 
+    const neighbors = [];
+  
+    const row = Math.floor(idx / width);
+    const col = idx % width;
+  
+    for (let r = -1; r <= 1; r++) {
+      for (let c = -1; c <= 1; c++) {
+        if (r === 0 && c === 0) continue; 
+        const newRow = row + r;
+        const newCol = col + c;
+        if (newRow >= 0 && newRow < width && newCol >= 0 && newCol < width) {
+          neighbors.push(newRow * width + newCol);
+        }
+      }
+    }
+    return neighbors;
+  }
 
   /*---------- render -------------------*/
 
