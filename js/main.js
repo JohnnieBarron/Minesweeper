@@ -81,6 +81,7 @@ function revealTile(idx) {
     } else {
       flood(idx);
     }
+    checkWin();
   } else if (board[idx].isMine === true) {
     boardEls[idx].textContent = "💣";
     boardEls[idx].style.backgroundColor = "red";
