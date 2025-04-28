@@ -9,7 +9,7 @@ const tile = {
 /*----- state variables -----*/
 let board;
 let flags;
-let winner = null;
+let inPlay = true;
 
 /*----- cached elements  -----*/
 
@@ -36,12 +36,16 @@ boardEls.forEach((El) => {
 init();
 
 function init() {
+  inPlay = true;
   renderGame();
+
   
 };
 
 
 function handleClick(event) {
+  if (inPlay === false) return;
+
   const idx = Array.from(boardEls).indexOf(event.target);
   checkForMine(idx);
   revealTile(idx);
@@ -55,6 +59,8 @@ function revealTile(idx) {
   } else if (board[idx].isMine === true) {
     boardEls[idx].textContent = "💣";
     boardEls[idx].style.backgroundColor = "red";
+    msgEl.textContent = "Game Over!"
+    inPlay = false;
   }
 };
 
@@ -97,8 +103,9 @@ function minesCounter() {
     })) : [];
     boardEls.forEach(tile => {
       tile.style.backgroundColor = 'grey';
+      tile.textContent = "";
     });
-
+    msgEl.textContent = ""
   }
 
 function renderGame() {
