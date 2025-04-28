@@ -125,6 +125,15 @@ function minesCounter() {
     return neighbors;
   }
 
+  function flood(idx) {
+    const neighbors = getAdjacentIndices(idx);
+    neighbors.forEach(nidx => {
+      if (!board[nidx].isRevealed && !board[nidx].isMine) {
+        revealTile(nidx);
+      }
+    });
+  };
+
   /*---------- render -------------------*/
 
   function renderBoard() {
