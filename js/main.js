@@ -43,7 +43,11 @@ function init() {
 };
 
 function placeFlag() {
-  
+
+};
+
+function handleRightClick() {
+
 };
 
 function handleClick(event) {
