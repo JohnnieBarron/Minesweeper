@@ -74,7 +74,7 @@ function createMines() {
   while (mineIdx.length < 7) {
     const randomIndex = Math.floor(Math.random() * boardEls.length);
     mineIdx.push(randomIndex);
-    boardEls[randomIndex].dataset.mine = "true";
+    boardEls[randomIndex].isMine = true;
     console.log(mineIdx);
   }
 
