@@ -36,11 +36,7 @@ boardEls.forEach((El) => {
 init();
 
 function init(event) {
-  board = boardEls.length ? Array.from({length: boardEls.length }, () => ({
-    isMine: false,
-    isRevealed: false,
-    isFlagged: false,
-  })) : [];
+
 
   renderGame();
   
@@ -74,7 +70,7 @@ function checkForMine(idx) {
 
 function createMines() {
   const mineIdx = new Set(); 
-  while (mineIdx.length < 7) {
+  while (mineIdx.size < 7) {
     const randomIndex = Math.floor(Math.random() * boardEls.length);
     if (!mineIdx.has(randomIndex)) {
       mineIdx.add(randomIndex);
@@ -92,10 +88,24 @@ function minesCounter() {
 
 
   /*---------- render -------------------*/
+
+  function renderBoard() {
+    board = boardEls.length ? Array.from({length: boardEls.length }, () => ({
+      isMine: false,
+      isRevealed: false,
+      isFlagged: false,
+    })) : [];
+
+    boardEls.forEach(tile => {
+      tile.style.backgroundColor = 'grey';
+    });
+
+  }
+
 function renderGame() {
   createMines();
   minesCounter();
-
+  renderBoard
 };
 
 
