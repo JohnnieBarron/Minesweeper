@@ -48,22 +48,25 @@ function init(event) {
 
 
 function handleClick(event) {
-  checkForMine(event.target);
-  revealTile(event.target);
+  const idx = Array.from(boardEls).indexOf(event.target);
+  checkForMine(idx);
+  revealTile(idx);
+
   console.log(event.target);
 };
 
-function revealTile(target) {
-  target.style.backgroundColor ="lightgrey";
+function revealTile(idx) {
+  board[idx].isRevealed = true;
+  board[idx].style.backgroundColor ="lightgrey";
 };
 
   /*----------------------------- mine functions ---------------------------------*/
 
-function checkForMine(target) {
-  if (target === true) {
+function checkForMine(idx) {
+  if (board[idx].isMine) {
     console.log('mine');
+    return;
   } else {
-    revealTile(target);
     console.log('not a mine')
   }
   
