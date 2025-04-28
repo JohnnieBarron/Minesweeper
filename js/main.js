@@ -53,12 +53,16 @@ function handleClick(event) {
 };
 
 function revealTile(idx) {
+  if (board[idx].isRevealed) return;
+
   board[idx].isRevealed = true;
   if (board[idx].isMine === false) {
     boardEls[idx].style.backgroundColor ="lightgrey";
     const adjMines = countAdjacentMines(idx);
     if (adjMines > 0) {
       boardEls[idx].textContent = adjMines;
+    } else {
+      flood(idx);
     }
   } else if (board[idx].isMine === true) {
     boardEls[idx].textContent = "💣";
