@@ -86,6 +86,7 @@ function revealTile(idx) {
     boardEls[idx].textContent = "💣";
     boardEls[idx].style.backgroundColor = "red";
     msgEl.textContent = "Game Over!"
+    buttonEl.textContent = "☠️";
     inPlay = false;
   }
 };
@@ -176,8 +177,9 @@ function minesCounter() {
       tile.style.backgroundColor = 'grey';
       tile.textContent = "";
     });
-    msgEl.textContent = "";
+    msgEl.textContent = "Let's play!";
     flagEL.textContent = flags;
+    buttonEl.textContent = "😊";
   }
 
 function renderGame() {

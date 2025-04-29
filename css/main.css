@@ -1,11 +1,45 @@
-* {
-    box-sizing: border-box;
-  }
 
-  .head {
-    display: flex;
-    gap: 5vmin;
-    margin-bottom: 5vmin;
+
+
+
+.gamespace{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #ddd;
+  padding: 10px;
+  border-color: black;
+  border-radius: 10px;
+  width: fit-content;
+  margin: 20px auto;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
+}
+
+#message {
+  min-height: 40px; 
+  min-width: 25vmin; 
+  margin-bottom: 5px;
+  text-align: center;
+  border-radius: 5%;
+  border-width: 2px;
+  border-style: solid;
+  border-color: rgb(0, 0, 0);
+  background-color: rgb(115, 247, 144);
+}
+
+.head {
+  display: flex;
+  justify-content: space-evenly;
+  gap: 5vmin;
+  align-items: center;
+  margin-bottom: 5vmin;
+  border-radius: 5%;
+  border-width: 2px;
+  border-style: solid;
+  border-color: black;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
 
@@ -15,19 +49,26 @@
     grid-template-rows: repeat(6, 10vmin);
     gap: 0vmin;
     margin-top: -4vmin;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+
   }
 
   .minefield>div {
     border-radius: 0%;
-    border: 0.1vmin solid grey;
+    border: .6vmin solid grey;
     border-color: black;
-    background-color: grey;
+    background-color: rgb(61, 61, 61);
+    border-top-color: grey;
+    border-right-color: black;
+    border-bottom-color: black;
+    border-left-color: grey;
+    
   }
   
   button {
-    font-size: 2vmin;       
-    width: 7vmin;          
-    height: 7vmin;         
+    width: 2em;
+    height: 2em;
+    padding: 0;
   }
 
   h1 {
