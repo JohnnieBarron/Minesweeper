@@ -9,6 +9,7 @@
   background-color: #ddd;
   padding: 10px;
   border-color: black;
+  border-style: solid;
   border-radius: 10px;
   width: fit-content;
   margin: 20px auto;
@@ -57,11 +58,11 @@
     border-radius: 0%;
     border: .6vmin solid grey;
     border-color: black;
-    background-color: rgb(61, 61, 61);
-    border-top-color: grey;
+    background-color: rgb(32, 32, 32);
+    border-top-color: rgb(156, 156, 156);
     border-right-color: black;
     border-bottom-color: black;
-    border-left-color: grey;
+    border-left-color: rgb(156, 156, 156);
     
   }
   
