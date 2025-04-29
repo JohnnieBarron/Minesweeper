@@ -7,12 +7,12 @@
   flex-direction: column;
   align-items: center;
   background-color: #ddd;
-  padding: 10px;
+  padding: 2vmin;
   border-color: black;
   border-style: solid;
   border-radius: 10px;
-  width: fit-content;
-  height: fit-content;
+  width: 60vmin;
+  height: 80vmin;
   margin: 20px auto;
   margin-bottom: 25px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -33,6 +33,7 @@
 
 .head {
   display: flex;
+  flex-direction: row;
   justify-content: space-evenly;
   gap: 5vmin;
   align-items: center;
@@ -45,11 +46,16 @@
   padding-right: 5px;
 }
 
+.label {
+  font-weight: bold;
+  margin-bottom: 0.5vmin;
+  font-size: 2.5vmin;
+}
 
   .minefield {
     display: grid;
-    grid-template-columns: repeat(6, 10vmin);
-    grid-template-rows: repeat(6, 10vmin);
+    grid-template-columns: repeat(6, 7vmin);
+    grid-template-rows: repeat(6, 7vmin);
     gap: 0vmin;
     margin-top: -4vmin;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
