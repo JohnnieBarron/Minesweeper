@@ -5,7 +5,7 @@ const tile = {
   isFlagged: false,
 
 }
-  
+
 /*----- state variables -----*/
 let board;
 let flags;
@@ -24,9 +24,9 @@ const boardEls = document.querySelectorAll('section.minefield div');
 buttonEl.addEventListener('click', init);
 
 boardEls.forEach((El) => {
-   El.addEventListener('click', handleClick);
-   El.addEventListener('contextmenu', handleRightClick);
- });
+  El.addEventListener('click', handleClick);
+  El.addEventListener('contextmenu', handleRightClick);
+});
 
 /*----- functions -----*/
 init();
@@ -53,7 +53,7 @@ function placeFlag(idx) {
 };
 
 function handleRightClick(event) {
-  event.preventDefault();                 
+  event.preventDefault();
   if (!inPlay) return;
 
   const idx = Array.from(boardEls).indexOf(event.target);
@@ -74,7 +74,7 @@ function revealTile(idx) {
 
   board[idx].isRevealed = true;
   if (board[idx].isMine === false) {
-    boardEls[idx].style.backgroundColor ="lightgrey";
+    boardEls[idx].style.backgroundColor = "lightgrey";
     const adjMines = countAdjacentMines(idx);
     if (adjMines > 0) {
       boardEls[idx].textContent = adjMines;
@@ -91,7 +91,7 @@ function revealTile(idx) {
   }
 };
 
-  /*----------------------------- mine functions ---------------------------------*/
+/*----------------------------- mine functions ---------------------------------*/
 
 function checkForMine(idx) {
   if (board[idx].isMine) {
@@ -102,7 +102,7 @@ function checkForMine(idx) {
 };
 
 function createMines() {
-  const mineIdx = new Set(); 
+  const mineIdx = new Set();
   while (mineIdx.size < 7) {
     const randomIndex = Math.floor(Math.random() * boardEls.length);
     if (!mineIdx.has(randomIndex)) {
@@ -114,73 +114,73 @@ function createMines() {
 };
 
 function minesCounter() {
- const mineCount = board.filter(tile => tile.isMine).length;
- mineCounterEL.textContent = mineCount;
- console.log(`mine count is ${mineCount}`);
-  };
+  const mineCount = board.filter(tile => tile.isMine).length;
+  mineCounterEL.textContent = mineCount;
+  console.log(`mine count is ${mineCount}`);
+};
 
-  function countAdjacentMines (idx) {
-    const adjacentIndices = getAdjacentIndices(idx);
-    let count = 0;
-    adjacentIndices.forEach(i => {
-      if (board[i] && board[i].isMine) count++;
-    });
-    return count;
-  };
+function countAdjacentMines(idx) {
+  const adjacentIndices = getAdjacentIndices(idx);
+  let count = 0;
+  adjacentIndices.forEach(i => {
+    if (board[i] && board[i].isMine) count++;
+  });
+  return count;
+};
 
-  function getAdjacentIndices(idx) {              // discord and google AI
-    const width = Math.sqrt(boardEls.length); 
-    const neighbors = [];
-  
-    const row = Math.floor(idx / width);
-    const col = idx % width;
-  
-    for (let r = -1; r <= 1; r++) {
-      for (let c = -1; c <= 1; c++) {
-        if (r === 0 && c === 0) continue; 
-        const newRow = row + r;
-        const newCol = col + c;
-        if (newRow >= 0 && newRow < width && newCol >= 0 && newCol < width) {
-          neighbors.push(newRow * width + newCol);
-        }
+function getAdjacentIndices(idx) {              // discord for coders and google AI assistance with this function, due to complexity of math
+  const width = Math.sqrt(boardEls.length);
+  const neighbors = [];
+
+  const row = Math.floor(idx / width);
+  const col = idx % width;
+
+  for (let r = -1; r <= 1; r++) {
+    for (let c = -1; c <= 1; c++) {
+      if (r === 0 && c === 0) continue;
+      const newRow = row + r;
+      const newCol = col + c;
+      if (newRow >= 0 && newRow < width && newCol >= 0 && newCol < width) {
+        neighbors.push(newRow * width + newCol);
       }
     }
-    return neighbors;
   }
+  return neighbors;
+}
 
-  function flood(idx) {
-    const neighbors = getAdjacentIndices(idx);
-    neighbors.forEach(nidx => {
-      if (!board[nidx].isRevealed && !board[nidx].isMine) {
-        revealTile(nidx);
-      }
-    });
-  };
-
-  function checkWin() {
-    const unrevealedTiles = board.filter(tile => !tile.isRevealed);
-    if (unrevealedTiles.length === 7) {
-      inPlay = false;
-      msgEl.textContent = "You Win! 🎉";
+function flood(idx) {
+  const neighbors = getAdjacentIndices(idx);
+  neighbors.forEach(nidx => {
+    if (!board[nidx].isRevealed && !board[nidx].isMine) {
+      revealTile(nidx);
     }
-  }
+  });
+};
 
-  /*---------- render -------------------*/
-
-  function renderBoard() {
-    board = boardEls.length ? Array.from({length: boardEls.length }, () => ({
-      isMine: false,
-      isRevealed: false,
-      isFlagged: false,
-    })) : [];
-    boardEls.forEach(tile => {
-      tile.style.backgroundColor = 'grey';
-      tile.textContent = "";
-    });
-    msgEl.textContent = "Let's play!";
-    flagEL.textContent = flags;
-    buttonEl.textContent = "😊";
+function checkWin() {
+  const unrevealedTiles = board.filter(tile => !tile.isRevealed);
+  if (unrevealedTiles.length === 7) {
+    inPlay = false;
+    msgEl.textContent = "You Win! 🎉";
   }
+}
+
+/*---------- render -------------------*/
+
+function renderBoard() {
+  board = boardEls.length ? Array.from({ length: boardEls.length }, () => ({
+    isMine: false,
+    isRevealed: false,
+    isFlagged: false,
+  })) : [];
+  boardEls.forEach(tile => {
+    tile.style.backgroundColor = 'grey';
+    tile.textContent = "";
+  });
+  msgEl.textContent = "Let's play!";
+  flagEL.textContent = flags;
+  buttonEl.textContent = "😊";
+}
 
 function renderGame() {
   renderBoard();

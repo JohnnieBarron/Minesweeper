@@ -63,6 +63,9 @@
   }
 
   .minefield>div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 0%;
     border: .6vmin solid grey;
     border-color: black;
