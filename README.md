@@ -20,8 +20,8 @@ Originally developed by Microsoft in the early 1990s, Minesweeper became a stapl
 
 # Getting Started
 
-[Click to View Project Planning](your Trello url here)
-[Click to Play Connect Four!](your deployment url here)
+<!-- [Click to View Project Planning](your Trello url here) -->
+[Click to Play Minesweeper!](https://johnniebarron.github.io/Minesweeper/)
 
 # Next Steps
 #### upcoming Features

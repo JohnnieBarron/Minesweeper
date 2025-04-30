@@ -5,24 +5,36 @@
 .gamespace{
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   background-color: #ddd;
   padding: 2vmin;
   border-color: black;
   border-style: solid;
   border-radius: 10px;
-  width: 60vmin;
-  height: 80vmin;
-  margin: 20px auto;
-  margin-bottom: 25px;
+  width: 70vmin;
+  height: 90vmin;
+  margin: auto;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  box-sizing: border-box;
+}
 
+h1 {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  font-size: 10vmin;
+  margin-bottom: 1vmin;
+  margin-top: 1vmin;
 }
 
 #message {
-  min-height: 40px; 
+  display: flex;
+  justify-content: center;
+  min-height: 5vmin; 
   min-width: 25vmin; 
-  margin-bottom: 5px;
+  margin-bottom: 1vmin;
+  margin-top: 1vmin;
   text-align: center;
   border-radius: 5%;
   border-width: 2px;
@@ -31,19 +43,28 @@
   background-color: rgb(115, 247, 144);
 }
 
+h2 {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  box-sizing: border-box;
+  padding-top: .1vmin;
+}
+
 .head {
   display: flex;
   flex-direction: row;
   justify-content: space-evenly;
   gap: 5vmin;
   align-items: center;
-  margin-bottom: 5vmin;
+  margin-bottom: .25vmin;
   border-radius: 5%;
   border-width: 2px;
   border-style: solid;
   border-color: black;
   padding-left: 5px;
   padding-right: 5px;
+  height: 7vmin;
 }
 
 .label {
@@ -54,10 +75,11 @@
 
   .minefield {
     display: grid;
+    justify-content: center;
     grid-template-columns: repeat(6, 7vmin);
     grid-template-rows: repeat(6, 7vmin);
     gap: 0vmin;
-    margin-top: -4vmin;
+    margin-top: .5vmin;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 
   }
@@ -77,16 +99,11 @@
     
   }
   
-  button {
+  /* button {
     width: 2em;
     height: 2em;
     padding: 0;
-  }
+  } */
 
-  .gamespace h1 {
-    display: flex;
-    justify-content: center;
-    width: 100%;
-    font-size: 10vmin;
-    margin-bottom: 10px;
-  }
+
+  
